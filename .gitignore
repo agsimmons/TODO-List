@@ -1,0 +1,6 @@
+# Vagrant
+/.vagrant
+*.log
+
+# OS Specific
+.DS_Store
