@@ -19,3 +19,7 @@ apt-get install -y mariadb-server mariadb-client
 
 # TODO: Configure MariaDB
 # =======================
+
+# === PHP ===
+apt-get install -y php php-mysql
+# ===========
