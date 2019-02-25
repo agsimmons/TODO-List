@@ -1,47 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<!-- meta tags required for bootstrap -->
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 	<title>TODO List - Home</title>
+
+	<!-- bootstrap CDN import -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+	<!-- our custom stylesheet -->
+	<link rel="stylesheet" href="css/main.css" type="text/css">
 </head>
 <body>
-	<nav>
-		<h2>TODO List</h2>
-		<button name="viewCompleted">View Completed</button>
-		<button name="logout" id="logoutButton">Logout</button>
+	<nav class="navbar navbar-expand-lg">
+		<h2 class="navbar-brand">TODO List</h2>
+		<ul class="navbar-nav mr-4">
+			<li class="nav-item"><a class="nav-link" href="completedtasks.html">Completed Tasks</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
+		</ul>
 	</nav>
 
 	<br />
 
-	<section id="tasks">
-		<table border="1px solid black">
-			<tr>
-				<th>Task</th>
-				<th>Tags</th>
-				<th>Due</th>
-				<th>Description</th>
-				<th><button name="addTask" id="add">+</th>
-			</tr>
-			<tr>
-				<td>Feed Ginger</td>
-				<td>pets, chores</td>
-				<td>2019-02-12 <br/> 04:37PM</td>
-				<td>How she monch so much?</td>
-				<td>
-					<button name="completeTask" id="complete">Complete</button>
-					<button name="deleteTask" id="delete">Delete</button>
-				</td>
-			</tr>
-			<tr>
-				<td>Make todo website</td>
-				<td>school, webdev</td>
-				<td>2019-04-16 <br /> 12:00PM</td>
-				<td>So meta</td>
-				<td>
-					<button name="completeTask" id="complete">Complete</button>
-					<button name="deleteTask" id="delete">Delete</button>
-				</td>
-			</tr>
+	<section class="tasks">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th scope="col">Task</th>
+					<th scope="col">Tags</th>
+					<th scope="col">Due</th>
+					<th scope="col">Description</th>
+					<th scope="col"><button name="addTask" id="add">+</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Feed Ginger</td>
+					<td>pets, chores</td>
+					<td>2019-02-12 <br/> 04:37PM</td>
+					<td>How she monch so much?</td>
+					<td>
+						<button name="completeTask" id="complete">Complete</button>
+						<button name="deleteTask" id="delete">Delete</button>
+					</td>
+				</tr>
+				<tr>
+					<td>Make todo website</td>
+					<td>school, webdev</td>
+					<td>2019-04-16 <br /> 12:00PM</td>
+					<td>So meta</td>
+					<td>
+						<button name="completeTask" id="complete">Complete</button>
+						<button name="deleteTask" id="delete">Delete</button>
+					</td>
+				</tr>
+			</tbody>
 		</table>
 	</section>
 	<br />

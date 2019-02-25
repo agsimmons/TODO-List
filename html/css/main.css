@@ -1,0 +1,23 @@
+/* CSS file for the TODO List project */
+
+table {
+  border: 1px solid black;
+}
+
+.navbar {
+  background: #E82C96;
+}
+
+.nav-link, .navbar-brand {
+  color: #FFF;
+  justify-content: flex-end;
+}
+
+.nav-link {
+  margin-right: 1em !important;
+}
+
+.nav-link:hover {
+  background: #FFF;
+  color: #E82C96
+}
