@@ -1,5 +1,9 @@
 /* CSS file for the TODO List project */
 
+body {
+    background-color: #f5f5f5;
+}
+
 footer {
   margin: 5px;
 }
