@@ -12,29 +12,29 @@
 
 	<!-- our custom stylesheet -->
 	<link rel="stylesheet" href="css/main.css" type="text/css">
+	<link rel="stylesheet" href="css/register.css" type="text/css">
 </head>
-<body>
+<body class="text-center">
 	<h1>TODO</h1>
-	<section>
-		<form method="post" action="login.php">
-			<fieldset>
-				<p>
-					<label>Username</label>
-					<input type="text" name="userName"/>
-				</p>
-				<p>
-					<label>Password</label>
-					<input type="password" name="password"/>
-				</p>
-				<p>
-					<label>Confirm Password</label>
-					<input type="password" name="confirmPassword"/>
-				</p>
-				<input type="button" id="register" value="Register"/>
-				<br>
-				<a href="login.html"><small>Already have an account?<br>Login</small></a>
-			</fieldset>
-		</form>
-	</section>
+	<form method="post" id="formRegister" action="login.php">
+			<div class="form-group">
+				<label class="sr-only" for="usernameInput">Username</label>
+				<input type="text" class="form-control" placeholder="Username" id="usernameInput" name="username"/>
+			</div>
+
+			<div class="form-group">
+				<label class="sr-only" for="passwordInput">Password</label>
+				<input type="password" class="form-control" placeholder="Password" id="passwordInput" name="password"/>
+			</div>
+
+			<div class="form-group">
+				<label class="sr-only" for="passwordInput">Confirm Password</label>
+				<input type="password" class="form-control" placeholder="Confirm Password" id="confirmPasswordInput" name="confirmPassword"/>
+			</div>
+
+			<input class="btn btn-lg btn-primary btn-block" type="button" id="register" value="Register"/>
+			<br>
+			<p><small>Already have an account? <a href="login.html">Login</a></small></p>
+	</form>
 </body>
 </html>
