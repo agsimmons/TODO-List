@@ -13,6 +13,7 @@
 
 	<!-- our custom stylesheet -->
 	<link rel="stylesheet" href="css/main.css" type="text/css">
+	<!--<script src="tasksmanager.php"></script>-->
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg">
@@ -26,22 +27,23 @@
 	<br>
 
 	<section class="tasks">
-		<table class="table table-bordered">
+		<?php include 'tasksmanager.php';?>
+		<table class="table table-bordered" id="task_table">
 			<thead>
 				<tr>
 					<th scope="col">Task</th>
 					<th scope="col">Tags</th>
 					<th scope="col">Due</th>
 					<th scope="col">Description</th>
-					<th scope="col"><button name="addTask" class="btn btn-primary">+</button></th>
+					<th scope="col"><button class="btn btn-primary" onclick="addTask()">+</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>Feed Ginger</td>
-					<td>pets, chores</td>
-					<td>2019-02-12 <br> 04:37PM</td>
-					<td>How she monch so much?</td>
+					<td id="task_name">Feed Ginger</td>
+					<td id="tags">pets, chores</td>
+					<td id="due_date">2019-02-12 <br/> 04:37PM</td>
+					<td id="descrip">How she monch so much?</td>
 					<td>
 						<button name="completeTask" class="btn btn-primary">Complete</button>
 						<button name="deleteTask" class="btn btn-primary">Delete</button>
