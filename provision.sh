@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-# Update packages
+# Update and upgrade packages
 apt-get update
+apt-get upgrade -y
 
 # === Apache ===
 # Install Apache
@@ -17,7 +18,10 @@ fi
 # === MariaDB / MySQL ===
 apt-get install -y mariadb-server mariadb-client
 
-# TODO: Configure MariaDB
+# Initialize database schema
+mysql -e "DROP DATABASE IF EXISTS todo;"
+mysql -e "CREATE DATABASE todo CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+mysql todo < /vagrant/schema.sql
 # =======================
 
 # === PHP ===
