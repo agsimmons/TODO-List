@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-# Update packages
+# Update and upgrade packages
 apt-get update
+apt-get upgrade -y
 
 # === Apache ===
 # Install Apache
