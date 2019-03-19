@@ -39,6 +39,7 @@ table {
   opacity: 1;
   background-color: #E82C96;
   border-color: #E82C96;
+  margin: 5px;
 }
 
 .btn:hover {

@@ -11,9 +11,9 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-	<!-- our custom stylesheet -->
+	<!-- our custom stylesheet and script -->
 	<link rel="stylesheet" href="css/main.css" type="text/css">
-	<!--<script src="tasksmanager.php"></script>-->
+	<script type="text/javascript" src="js/tasksmanager.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg">
@@ -26,8 +26,7 @@
 
 	<br>
 
-	<section class="tasks">
-		<?php include 'tasksmanager.php';?>
+	<div class="tasks">
 		<table class="table table-bordered" id="task_table">
 			<thead>
 				<tr>
@@ -35,33 +34,33 @@
 					<th scope="col">Tags</th>
 					<th scope="col">Due</th>
 					<th scope="col">Description</th>
-					<th scope="col"><button class="btn btn-primary" onclick="addTask()">+</th>
+					<th scope="col"><button class="btn btn-primary" onclick="addTask();">+</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td id="task_name">Feed Ginger</td>
-					<td id="tags">pets, chores</td>
-					<td id="due_date">2019-02-12 <br/> 04:37PM</td>
-					<td id="descrip">How she monch so much?</td>
+				<tr contentEditable="true">
+					<td>Feed Ginger</td>
+					<td>pets, chores</td>
+					<td>2019-02-12 <br/> 04:37PM</td>
+					<td>How she monch so much?</td>
 					<td>
-						<button name="completeTask" class="btn btn-primary">Complete</button>
-						<button name="deleteTask" class="btn btn-primary">Delete</button>
+						<button name="completeTask" class="btn btn-primary" onclick="completeTask(this);">Complete</button>
+						<button name="deleteTask" class="btn btn-primary" onclick="deleteTask(this);">Delete</button>
 					</td>
 				</tr>
-				<tr>
+				<tr contentEditable="true">
 					<td>Make todo website</td>
 					<td>school, webdev</td>
 					<td>2019-04-16 <br> 12:00PM</td>
 					<td>So meta</td>
 					<td>
-						<button name="completeTask" class="btn btn-primary">Complete</button>
-						<button name="deleteTask" class="btn btn-primary">Delete</button>
+						<button name="completeTask" class="btn btn-primary" onclick="completeTask(this);">Complete</button>
+						<button name="deleteTask" class="btn btn-primary" onclick="deleteTask(this);">Delete</button>
 					</td>
 				</tr>
 			</tbody>
 		</table>
-	</section>
+	</div>
 	<br>
 	<footer>
 		<small>
