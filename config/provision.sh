@@ -25,7 +25,7 @@ mysql -e "CREATE USER 'todouser' IDENTIFIED BT 'todouserpassword';"
 mysql -e "GRANT USAGE ON *.* TO 'todouser'@localhost IDENTIFIED BY 'todouserpassword';"
 mysql -e "GRANT ALL PRIVILEGES ON `todo`.* TO 'todouser'@localhost;"
 mysql -e "FLUSH PRIVELEGES;"
-mysql todo < /vagrant/schema.sql
+mysql todo < /vagrant/config/schema.sql
 # =======================
 
 # === PHP ===
