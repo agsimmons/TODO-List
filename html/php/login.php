@@ -9,10 +9,9 @@
     // Create connection to database
     $conn = new mysqli($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
 
-    // TODO: Implement login
-    // Check connection
+    // Check connection to database
     if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+        die("ERROR: Connection failed: " . $conn->connect_error);
     }
 
     # Parse parameters from form
