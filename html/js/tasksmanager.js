@@ -5,6 +5,8 @@ function addTask() {
   var taskTable = document.getElementById("task_table");
   // insert new row to bottom of the table
   var newTask = taskTable.insertRow(-1);
+  // Makes the added row editable
+  newTask.contentEditable = "true";
   //newTask.contentEditable = "true"; // works for the row, but editCell should be used when written
   // insert cells ("td") into the new row
   var taskName = newTask.insertCell(0).innerHTML = "New task";
@@ -13,8 +15,30 @@ function addTask() {
   var descrip = newTask.insertCell(3).innerHTML = "Write your description here";
   var buttons = newTask.insertCell(4);
 
-  createButton("Complete", buttons);
-  createButton("Delete", buttons);
+  //createButton("Complete", buttons);
+  var btnC = document.createElement('button');
+  btnC.innerHTML = "Complete";
+  btnC.id = "cc";
+  btnC.className = "btn btn-primary";
+  buttons.appendChild(btnC);
+  document.getElementById("cc").addEventListener("click", CR);
+  function CR(){
+  document.getElementById("task_table").deleteRow(-1);
+  };
+
+//createButton("Delete", buttons);
+  var btnD = document.createElement('button');
+  btnD.innerHTML = "Delete";
+  btnD.id = "dd";
+  btnD.className = "btn btn-primary";
+  buttons.appendChild(btnD);
+
+  document.getElementById("dd").addEventListener("click", DR);
+  function DR(){
+  document.getElementById("task_table").deleteRow(-1);
+  };
+  
+
 }
 
 // editTask allows a user to edit a cell when clicked in task_table
