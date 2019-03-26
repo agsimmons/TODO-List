@@ -4,16 +4,35 @@
 function addTask() {
   var taskTable = document.getElementById("task_table");
   // insert new row to bottom of the table
-  var newTask = taskTable.insertRow(-1);
-  // Makes the added row editable
-  newTask.contentEditable = "true";
-  //newTask.contentEditable = "true"; // works for the row, but editCell should be used when written
-  // insert cells ("td") into the new row
-  var taskName = newTask.insertCell(0).innerHTML = "New task";
-  var tags = newTask.insertCell(1).innerHTML = "Test";
-  var dueDate = newTask.insertCell(2).innerHTML = "2019-03-19";
-  var descrip = newTask.insertCell(3).innerHTML = "Write your description here";
-  var buttons = newTask.insertCell(4);
+  taskTable.insertRow(-1).innerHTML = '<tr id="next_row"><td id="name_td"><textarea name="Name" placeholder="New task" id="name"></textarea></td>' +
+                                          '<td id="tag_td"><p id="tag">New Tag</p></td>' +
+                                          '<td id="date_td"><textarea name="Date" placeholder="Current Time" id="due_date"></textarea></td>' +
+                                          '<td id="description_td"><textarea name="Description" placeholder="Enter description here" id="description"></textarea></td>' +
+                                          '<td id="buttons"><button class="btn btn-primary" onclick="createTask()">Create</button></td></tr>';
+}
+
+// createTask has the user fill in the empty text areas generated from addTask
+function createTask() {
+  var nameCell = document.getElementById("name_td");
+  var dateCell = document.getElementById("date_td");
+  var descripCell = document.getElementById("description_td");
+
+  var nameText = document.getElementById("name");
+  var dateText = document.getElementById("due_date");
+  var descripText = document.getElementById("description");
+
+  if (nameText.value == "" || dateText.value == "" || descripText.value == "") {
+    alert("Please fill in all fields.");
+  } else {
+    nameCell.innerHTML = nameText.value;
+    dateCell.innerHTML = dateText.value;
+    descripCell.innerHTML = descripText.value;
+
+    var buttons = document.getElementById("next_row");
+    document.getElementById("buttons").innerHTML = createButton("Complete", buttons);
+    // createButton("Complete", buttons);
+    // createButton("Delete", buttons);
+  }
 
   //createButton("Complete", buttons);
   var btnC = document.createElement('button');
@@ -37,8 +56,6 @@ function addTask() {
   function DR(){
   document.getElementById("task_table").deleteRow(-1);
   };
-  
-
 }
 
 // editTask allows a user to edit a cell when clicked in task_table

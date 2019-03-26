@@ -24,7 +24,10 @@
     $db_password = mysqli_fetch_assoc($result)["password"];
 
     if (password_verify($password, $db_password)) {
-        echo "Credentials valid!";
+      #  echo "Credentials valid!";
+        $newURL = "../index.html";
+        header('Location: '.$newURL);
+        exit();
     } else {
         echo "Credentials invalid!";
     }
