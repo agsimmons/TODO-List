@@ -34,30 +34,35 @@
 					<th scope="col">Tags</th>
 					<th scope="col">Due</th>
 					<th scope="col">Description</th>
-					<th scope="col"><button class="btn btn-primary" onclick="addTask();">+</th>
+					<th scope="col"><button class="btn btn-primary" onclick="addTask()">+</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr contentEditable="true">
-					<td>Feed Ginger</td>
-					<td>pets, chores</td>
-					<td>2019-02-12 <br/> 04:37PM</td>
-					<td>How she monch so much?</td>
-					<td>
-						<button name="completeTask" class="btn btn-primary" onclick="completeTask(this);">Complete</button>
-						<button name="deleteTask" class="btn btn-primary" onclick="deleteTask(this);">Delete</button>
-					</td>
-				</tr>
-				<tr contentEditable="true">
-					<td>Make todo website</td>
-					<td>school, webdev</td>
-					<td>2019-04-16 <br> 12:00PM</td>
-					<td>So meta</td>
-					<td>
-						<button name="completeTask" class="btn btn-primary" onclick="completeTask(this);">Complete</button>
-						<button name="deleteTask" class="btn btn-primary" onclick="deleteTask(this);">Delete</button>
-					</td>
-				</tr>
+				<?php
+					$mysql_host = "localhost";
+					$mysql_user = "todouser";
+					$mysql_pass = "todouserpassword";
+					$mysql_db = "todo";
+
+					// Create connection to database
+					$conn = new mysqli($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
+
+					$query = "SELECT * FROM task";
+					$result = $conn->query($query);
+
+					if ($result > 0) {
+						while ($row = $result->fetch_assoc()) {
+							echo '<tr>
+										<td>' . $row["name"]. '</td>
+										<td>Test Tag</td>
+										<td>' . $row["due_date"]. '</td>
+										<td>' . $row["description"]. '</td>
+										<td><button class="btn btn-primary" onclick="completeTask()">Complete</button><button class="btn btn-primary" onclick="deleteTask()">Delete</button></td>
+									  </tr>';
+						}
+					}
+					mysqli_close($conn);
+				?>
 			</tbody>
 		</table>
 	</div>
