@@ -4,7 +4,7 @@
     $mysql_host = "localhost";
     $mysql_user = "todouser";
     $mysql_pass = "todouserpassword";
-    $mysql_db = "todo";
+    $mysql_db = "mydb";
 
     // Create connection to database
     $conn = new mysqli($mysql_host, $mysql_user, $mysql_pass, $mysql_db);

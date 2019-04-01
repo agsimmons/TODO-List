@@ -5,7 +5,7 @@ function addTask() {
   var taskTable = document.getElementById("task_table");
   // insert new row to bottom of the table
   taskTable.insertRow(-1).innerHTML = '<tr id="next_row"><td id="name_td"><textarea name="Name" placeholder="New task" id="name"></textarea></td>' +
-                                          '<td id="tag_td"><p id="tag">New Tag</p></td>' +
+                                          '<td id="tag_td"><textarea name="tag" placeholder="Enter tags" id="tag"></textarea></td>' +
                                           '<td id="date_td"><textarea name="Date" placeholder="Current Time" id="due_date"></textarea></td>' +
                                           '<td id="description_td"><textarea name="Description" placeholder="Enter description here" id="description"></textarea></td>' +
                                           '<td id="buttons"><button class="btn btn-primary" onclick="createTask()">Create</button></td></tr>';
@@ -14,10 +14,12 @@ function addTask() {
 // createTask has the user fill in the empty text areas generated from addTask
 function createTask() {
   var nameCell = document.getElementById("name_td");
+  var tagcCell = document.getElementById("tag_td");
   var dateCell = document.getElementById("date_td");
   var descripCell = document.getElementById("description_td");
 
   var nameText = document.getElementById("name");
+  var tagText = document.getElementById("tag");
   var dateText = document.getElementById("due_date");
   var descripText = document.getElementById("description");
 

@@ -42,10 +42,19 @@
 					$mysql_host = "localhost";
 					$mysql_user = "todouser";
 					$mysql_pass = "todouserpassword";
-					$mysql_db = "todo";
+					$mysql_db = "mydb";
 
 					// Create connection to database
 					$conn = new mysqli($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
+
+					// Check database connection
+					//include 'db_connection.php';
+
+					//$conn = OpenCon();
+
+					//echo "Connected Successfuly";
+
+					//CloseCon($conn);
 
 					$query = "SELECT * FROM task";
 					$result = $conn->query($query);
@@ -54,7 +63,7 @@
 						while ($row = $result->fetch_assoc()) {
 							echo '<tr>
 										<td>' . $row["name"]. '</td>
-										<td>Test Tag</td>
+										<td>' . $row["tag"]. '</td>
 										<td>' . $row["due_date"]. '</td>
 										<td>' . $row["description"]. '</td>
 										<td><button class="btn btn-primary" onclick="completeTask()">Complete</button><button class="btn btn-primary" onclick="deleteTask()">Delete</button></td>
