@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     // Initialize database connection variables
     $mysql_host = "localhost";
     $mysql_user = "todouser";
@@ -24,9 +24,12 @@
     $db_password = mysqli_fetch_assoc($result)["password"];
 
     if (password_verify($password, $db_password)) {
-      #  echo "Credentials valid!";
-        $newURL = "../index.html";
-        header('Location: '.$newURL);
+      echo "Successful!";
+        // $user_id = "SELECT id FROM user WHERE username = '".$username"' LIMIT 1;";
+        // $uid = $conn->query($user_id);
+        // $_SESSION['id'] = $uid;
+        // echo ($_SESSION['id']);
+        header('Location: ../index.php');
         exit();
     } else {
         echo "Credentials invalid!";

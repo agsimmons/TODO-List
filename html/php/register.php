@@ -21,7 +21,10 @@
     $sql_register = "INSERT INTO user(username, password) VALUES ('".$username."', '".$password."');";
 
     if (mysqli_query($conn, $sql_register)) {
-        echo "User created successfully";
+      //  echo "User created successfully";
+        $newURL = "../index.php";
+        header('Location: '.$newURL);
+        exit();
     } else {
         echo "ERROR: " . mysqli_error($conn);
     }
