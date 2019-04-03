@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>TODO List - Login</title>
+	<title>TODO List - Completed Tasks</title>
 
 	<!-- bootstrap CDN import -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -17,7 +17,7 @@
   <nav class="navbar navbar-expand-lg">
 		<h2 class="navbar-brand">TODO List</h2>
 		<ul class="navbar-nav mr-4">
-			<li class="nav-item"><a class="nav-link" href="index.html">In-Progress Tasks</a></li>
+			<li class="nav-item"><a class="nav-link" href="index.php">In-Progress Tasks</a></li>
 			<li class="nav-item"><a class="nav-link" href="login.html">Logout</a></li><!--change this to actually log out -->
 		</ul>
 	</nav>
@@ -36,26 +36,31 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>Buy Groceries</td>
-					<td>food, chores</td>
-					<td>2019-02-07 <br> 03:00PM</td>
-					<td>Buy milk and bread and catfood</td>
-          <td>2019-02-07 <br> 04:25PM</td>
-				</tr>
-				<tr>
-					<td>Cybersecurity Scripting Lab</td>
-					<td>school, script</td>
-					<td>2019-02-23 <br> 11:59PM</td>
-					<td>Submit on BlackBoard</td>
-          <td>2019-02-08 <br> 03:00PM</td>
-				</tr>
-        <tr>
-          <td>Clean Room</td>
-          <td>chores</td>
-          <td>2019-02-06 <br> 10:00PM</td>
-          <td>clean room</td>
-          <td>2019-02-06 <br> 08:00PM</td>
+				<?php
+					$mysql_host = "localhost";
+					$mysql_user = "todouser";
+					$mysql_pass = "todouserpassword";
+					$mysql_db = "todo";
+
+					// Create connection to database
+					$conn = new mysqli($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
+
+					$query = "SELECT * FROM task WHERE fk_user='".$_SESSION['id']."' AND completed=1";
+					$result = $conn->query($query);
+
+					if ($result > 0) {
+						while ($row = $result->fetch_assoc()) {
+							echo '<tr>
+										<td>' . $row["name"]. '</td>
+										<td>Test Tag</td>
+										<td>' . $row["due_date"]. '</td>
+										<td>' . $row["description"]. '</td>
+										<td>2019-04-02 17:38:33</td>
+										</tr>';
+						}
+					}
+					mysqli_close($conn);
+				?>
 			</tbody>
 		</table>
 	</section>

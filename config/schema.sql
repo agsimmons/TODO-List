@@ -7,7 +7,8 @@ CREATE TABLE user (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 -- Create 'task' table
 DROP TABLE IF EXISTS task;
 CREATE TABLE task (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                   FOREIGN KEY user(id) REFERENCES user(id) ON DELETE CASCADE,
+                   fk_user INT NOT NULL,
+                   FOREIGN KEY (fk_user) REFERENCES user(id) ON DELETE CASCADE,
                    name VARCHAR(255) NOT NULL,
                    due_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
                    description VARCHAR(2048),
@@ -16,5 +17,6 @@ CREATE TABLE task (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 -- Create 'tag' table
 DROP TABLE IF EXISTS tag;
 CREATE TABLE tag (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                  FOREIGN KEY task(id) REFERENCES task(id) ON DELETE CASCADE,
+                  fk_task INT NOT NULL,
+                  FOREIGN KEY (fk_task) REFERENCES task(id) ON DELETE CASCADE,
                   name VARCHAR(32) NOT NULL);

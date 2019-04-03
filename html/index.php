@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,14 +14,14 @@
 
 	<!-- our custom stylesheet and script -->
 	<link rel="stylesheet" href="css/main.css" type="text/css">
-	<script type="text/javascript" src="js/tasksmanager.js"></script>
+	<script src="js/tasksmanager.js.php"></script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg">
 		<h2 class="navbar-brand">TODO List</h2>
 		<ul class="navbar-nav mr-4">
-			<li class="nav-item"><a class="nav-link" href="completedtasks.html">Completed Tasks</a></li>
-			<li class="nav-item"><a class="nav-link" href="login.html">Logout</a></li><!--change this to actually log out -->
+			<li class="nav-item"><a class="nav-link" href="completedtasks.php">Completed Tasks</a></li>
+			<li class="nav-item"><a class="nav-link" href="php/logout.php">Logout</a></li><!--change this to actually log out -->
 		</ul>
 	</nav>
 
@@ -47,7 +48,8 @@
 					// Create connection to database
 					$conn = new mysqli($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
 
-					$query = "SELECT * FROM task";
+					// change fk_user to the user's id from the session
+					$query = "SELECT * FROM task WHERE fk_user=1 AND completed=0";
 					$result = $conn->query($query);
 
 					if ($result > 0) {
@@ -57,7 +59,8 @@
 										<td>Test Tag</td>
 										<td>' . $row["due_date"]. '</td>
 										<td>' . $row["description"]. '</td>
-										<td><button class="btn btn-primary" onclick="completeTask()">Complete</button><button class="btn btn-primary" onclick="deleteTask()">Delete</button></td>
+										<td><button class="btn btn-primary" onclick="completeTask()">Complete</button>
+										<button class="btn btn-primary" onclick="deleteTask()">Delete</button></td>
 									  </tr>';
 						}
 					}
