@@ -51,7 +51,7 @@
 					// change fk_user to the user's id from the session
 					$query = "SELECT * FROM task WHERE fk_user=1 AND completed=0";
 					$result = $conn->query($query);
-					
+
 					if ($result > 0) {
 						while ($row = $result->fetch_assoc()) {
 							echo '<tr>
