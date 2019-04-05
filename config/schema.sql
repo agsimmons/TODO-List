@@ -1,7 +1,7 @@
 -- Create 'user' table
 DROP TABLE IF EXISTS user;
 CREATE TABLE user (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                   username VARCHAR(32) NOT NULL,
+                   username VARCHAR(32) NOT NULL UNIQUE,
                    password VARCHAR(255) NOT NULL);
 
 -- Create 'task' table
