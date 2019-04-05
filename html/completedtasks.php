@@ -34,8 +34,8 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username']) || !isset($_SE
   <nav class="navbar navbar-expand-lg">
 		<h2 class="navbar-brand">TODO List</h2>
 		<ul class="navbar-nav mr-4">
-			<li class="nav-item"><a class="nav-link" href="index.php">In-Progress Tasks</a></li>
-			<li class="nav-item"><a class="nav-link" href="login.html">Logout</a></li><!--change this to actually log out -->
+			<li class="nav-item"><a class="nav-link" href="main.php">In-Progress Tasks</a></li>
+			<li class="nav-item"><a class="nav-link" href="php/logout.php">Logout</a></li><!--change this to actually log out -->
 		</ul>
 	</nav>
 
