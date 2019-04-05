@@ -1,5 +1,11 @@
 <?php
+
 session_start();
-unset($_SESSION["id"]);
-header('Location: ../login.html')
+
+// Clear session variables and destroy session
+session_unset();
+session_destroy();
+
+header('Location: /login.php');
+
 ?>

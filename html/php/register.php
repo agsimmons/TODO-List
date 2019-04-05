@@ -1,34 +1,38 @@
 <?php
 
-    // Initialize database connection variables
-    $mysql_host = "localhost";
-    $mysql_user = "todouser";
-    $mysql_pass = "todouserpassword";
-    $mysql_db = "todo";
+session_start();
 
-    // Create connection to database
-    $conn = new mysqli($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
+// Initialize database connection variables
+include "db_config.php";
 
-    // Check connection to database
-    if ($conn->connect_error) {
-        die("ERROR: Connection failed: " . $conn->connect_error);
-    }
+// Create connection to database
+$conn = new mysqli($db_config["host"], $db_config["user"], $db_config["pass"], $db_config["db"]);
 
-    # Parse parameters from form
-    $username = $_POST["username"];
-    $password = password_hash($_POST["password"], PASSWORD_BCRYPT);
+// Check connection to database
+// TODO: Log error instead of showing it to user
+if ($conn->connect_error) {
+    die("ERROR: Connection failed: " . $conn->connect_error);
+}
 
-    $sql_register = "INSERT INTO user(username, password) VALUES ('".$username."', '".$password."');";
+# Parse parameters from form
+$username = $_POST["username"];
+$password = password_hash($_POST["password"], PASSWORD_BCRYPT);
 
-    if (mysqli_query($conn, $sql_register)) {
-      //  echo "User created successfully";
-        $newURL = "../index.php";
-        header('Location: '.$newURL);
-        exit();
-    } else {
-        echo "ERROR: " . mysqli_error($conn);
-    }
+$sql_register = "INSERT INTO user(username, password) VALUES ('" . $username . "', '" . $password . "');";
 
-    $conn->close();
+if (mysqli_query($conn, $sql_register)) {
+
+    // Set session variables
+    $_SESSION["user_id"] = mysqli_insert_id($conn);
+    $_SESSION["username"] = $username;
+    $_SESSION["hashed_password"] = $password;
+
+    header('Location: /main.php');
+} else {
+    // TODO: Log error instead of showing it to user
+    echo "ERROR: " . mysqli_error($conn);
+}
+
+$conn->close();
 
 ?>
