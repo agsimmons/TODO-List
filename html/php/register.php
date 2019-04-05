@@ -3,13 +3,10 @@
 session_start();
 
 // Initialize database connection variables
-$mysql_host = "localhost";
-$mysql_user = "todouser";
-$mysql_pass = "todouserpassword";
-$mysql_db = "todo";
+include "db_config.php";
 
 // Create connection to database
-$conn = new mysqli($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
+$conn = new mysqli($db_config["host"], $db_config["user"], $db_config["pass"], $db_config["db"]);
 
 // Check connection to database
 // TODO: Log error instead of showing it to user
