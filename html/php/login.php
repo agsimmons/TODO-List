@@ -1,37 +1,46 @@
 <?php
-    session_start();
-    // Initialize database connection variables
-    $mysql_host = "localhost";
-    $mysql_user = "todouser";
-    $mysql_pass = "todouserpassword";
-    $mysql_db = "todo";
 
-    // Create connection to database
-    $conn = new mysqli($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
+session_start();
 
-    // Check connection to database
-    if ($conn->connect_error) {
-        die("ERROR: Connection failed: " . $conn->connect_error);
-    }
+// Initialize database connection variables
+$mysql_host = "localhost";
+$mysql_user = "todouser";
+$mysql_pass = "todouserpassword";
+$mysql_db = "todo";
 
-    # Parse parameters from form
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+// Create connection to database
+$conn = new mysqli($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
 
-    # Get username and hashed password from database
-    $db_password_query = "SELECT password FROM user WHERE username = '".$username."';";
-    $result = mysqli_query($conn, $db_password_query);
-    $db_password = mysqli_fetch_assoc($result)["password"];
+// Check connection to database
+// TODO: Log error instead of showing it to user
+if ($conn->connect_error) {
+    die("ERROR: Connection failed: " . $conn->connect_error);
+}
 
-    if (password_verify($password, $db_password)) {
-      echo "Successful!";
-        // $user_id = "SELECT id FROM user WHERE username = '".$username"' LIMIT 1;";
-        // $uid = $conn->query($user_id);
-        // $_SESSION['id'] = $uid;
-        // echo ($_SESSION['id']);
-        header('Location: ../index.php');
-        exit();
-    } else {
-        echo "Credentials invalid!";
-    }
+# Parse parameters from form
+$username = $_POST["username"];
+$password = $_POST["password"];
+
+# Get username and hashed password from database
+$db_password_query = "SELECT id, password FROM user WHERE username = '" . $username . "';";
+$response = mysqli_query($conn, $db_password_query);
+$response_assoc = mysqli_fetch_assoc($response);
+
+$db_id = $response_assoc["id"];
+$db_password = $response_assoc["password"];
+
+if (password_verify($password, $db_password)) {
+
+    // Set session variables
+    $_SESSION["user_id"] = $db_id;
+    $_SESSION["username"] = $username;
+    $_SESSION["hashed_password"] = $db_password;
+
+    header('Location: /main.php');
+} else {
+    echo "Credentials invalid!";
+}
+
+$conn->close();
+
 ?>
