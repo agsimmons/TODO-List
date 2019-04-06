@@ -6,7 +6,7 @@ function addTask() {
   // insert new row to bottom of the table
   taskTable.insertRow(-1).innerHTML = '<tr id="next_row"><td id="name_td"><textarea name="name" placeholder="New task" id="name"></textarea></td>' +
                                           '<td id="tag_td"><p id="tag">New Tag</p></td>' +
-                                          '<td id="date_td"><textarea name="date" placeholder="Current Time" id="due_date"></textarea></td>' +
+                                          '<td id="date_td"><input type="date" name="date" placeholder="Current Time" id="due_date"></input></td>' +
                                           '<td id="description_td"><textarea name="description" placeholder="Enter description here" id="description"></textarea></td>' +
                                           '<td id="buttons"><button class="btn btn-primary" id="create_btn" onclick="createTask()">Create</button></td></tr>';
 }
