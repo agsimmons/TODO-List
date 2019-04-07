@@ -74,7 +74,7 @@ function createTaskForm() {
             <form id="task_entry" method="POST" action="/php/ajax/add_task.php"></form>
             <td>
                 <div class="form-group">
-                    <input class="form-control" form="task_entry" type="text" placeholder="Task Name" name="task_name">
+                    <input class="form-control" form="task_entry" type="text" placeholder="Task Name" name="task_name" required>
                 </div>
             </td>
 
