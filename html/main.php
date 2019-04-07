@@ -28,9 +28,16 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username']) || !isset($_SE
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-	<!-- our custom stylesheet and script -->
+	<!-- our custom stylesheet -->
 	<link rel="stylesheet" href="css/main.css" type="text/css">
-	<script src="js/tasksmanager.js.php"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="js/taskmanager.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg">
@@ -54,35 +61,7 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username']) || !isset($_SE
 					<th scope="col"><button class="btn btn-primary" onclick="addTask()">+</th>
 				</tr>
 			</thead>
-			<tbody>
-				<?php
-					$mysql_host = "localhost";
-					$mysql_user = "todouser";
-					$mysql_pass = "todouserpassword";
-					$mysql_db = "todo";
-
-					// Create connection to database
-					$conn = new mysqli($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
-
-					// change fk_user to the user's id from the session
-					$query = "SELECT * FROM task WHERE fk_user=1 AND completed=0";
-					$result = $conn->query($query);
-
-					if ($result > 0) {
-						while ($row = $result->fetch_assoc()) {
-							echo '<tr>
-										<td>' . $row["name"]. '</td>
-										<td>Test Tag</td>
-										<td>' . $row["due_date"]. '</td>
-										<td>' . $row["description"]. '</td>
-										<td><button class="btn btn-primary" onclick="completeTask()">Complete</button>
-										<button class="btn btn-primary" onclick="deleteTask()">Delete</button></td>
-									  </tr>';
-						}
-					}
-					mysqli_close($conn);
-				?>
-			</tbody>
+			<tbody id="tasks"></tbody>
 		</table>
 	</div>
 	<br>
