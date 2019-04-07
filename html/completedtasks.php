@@ -36,7 +36,6 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username']) || !isset($_SE
             crossorigin="anonymous"></script>
 
     <!-- Custom JavaScript -->
-    <script src="js/taskmanager.js"></script>
     <script src="js/completedtasks.js"></script>
 </head>
 <body>
