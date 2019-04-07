@@ -60,3 +60,39 @@ function completeTask(id) {
     });
 
 }
+
+function createTaskForm() {
+
+    // Return if form already exists
+    if ($('#task_entry').length != 0) {
+        return;
+    }
+
+    var $tasks = $('#tasks');
+    var html = `
+        <tr>
+            <form id="task_entry" method="POST" action="/php/ajax/add_task.php"></form>
+            <td>
+                <input form="task_entry" type="text" name="task_name">
+            </td>
+
+            <td>
+                TODO
+            </td>
+
+            <td>
+                <input form="task_entry" type="date" name="task_due_date">
+            </td>
+
+            <td>
+                <input form="task_entry" type="text" name="task_description">
+            </td>
+
+            <td>
+            <input form="task_entry" type="submit">
+            </td>
+        </tr>
+    `
+
+    $tasks.append(html);
+}
