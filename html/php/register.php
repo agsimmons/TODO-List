@@ -11,16 +11,16 @@ $password = password_hash($_POST["password"], PASSWORD_BCRYPT);
 
 $sql_register = "INSERT INTO user(username, password) VALUES ('" . $username . "', '" . $password . "');";
 
-if (mysqli_query($conn, $sql_register)) {
+if ($conn->query("INSERT INTO user(username, password) VALUES ('" . $username . "', '" . $password . "');")) {
 
     // Set session variables
-    $_SESSION["user_id"] = mysqli_insert_id($conn);
+    $_SESSION["user_id"] = $conn->insert_id;
     $_SESSION["username"] = $username;
 
     header('Location: /main.php');
 } else {
     // TODO: Log error instead of showing it to user
-    echo "ERROR: " . mysqli_error($conn);
+    echo "ERROR: " . $conn->connect_error;
 }
 
 $conn->close();

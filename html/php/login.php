@@ -10,9 +10,8 @@ $username = $_POST["username"];
 $password = $_POST["password"];
 
 # Get username and hashed password from database
-$db_password_query = "SELECT id, password FROM user WHERE username = '" . $username . "';";
-$response = mysqli_query($conn, $db_password_query);
-$response_assoc = mysqli_fetch_assoc($response);
+$response = $conn->query("SELECT id, password FROM user WHERE username = '" . $username . "';");
+$response_assoc = $response->fetch_assoc();
 
 $db_id = $response_assoc["id"];
 $db_password = $response_assoc["password"];
