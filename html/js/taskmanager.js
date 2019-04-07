@@ -5,6 +5,7 @@ $(function() {
 function getIncompleteTasks() {
 
     var $tasks = $('#tasks');
+    $tasks.empty();
 
     $.ajax({
         type: 'GET',
