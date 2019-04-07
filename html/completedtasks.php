@@ -3,14 +3,13 @@
 session_start();
 
 // If user does not have an active session, redirect to the main page
-if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username']) || !isset($_SESSION['hashed_password'])) {
+if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username'])) {
     header('Location: /login.php');
 } else {
     // TODO: Remove debugging information
     echo "=== DEBUG SESSION INFO ===" . "<br>";
     echo "User ID: " . $_SESSION["user_id"] . "<br>";
     echo "Username: " . $_SESSION["username"] . "<br>";
-    echo "Hashed Password: " . $_SESSION["hashed_password"] . "<br>";
 }
 
 ?>

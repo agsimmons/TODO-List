@@ -31,7 +31,6 @@ if (password_verify($password, $db_password)) {
     // Set session variables
     $_SESSION["user_id"] = $db_id;
     $_SESSION["username"] = $username;
-    $_SESSION["hashed_password"] = $db_password;
 
     header('Location: /main.php');
 } else {

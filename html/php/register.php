@@ -25,7 +25,6 @@ if (mysqli_query($conn, $sql_register)) {
     // Set session variables
     $_SESSION["user_id"] = mysqli_insert_id($conn);
     $_SESSION["username"] = $username;
-    $_SESSION["hashed_password"] = $password;
 
     header('Location: /main.php');
 } else {
