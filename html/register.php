@@ -5,11 +5,6 @@ session_start();
 // If user has an active session, redirect to the main page
 if (isset($_SESSION["user_id"]) && isset($_SESSION['username'])) {
     header('Location: /main.php');
-} else {
-    // TODO: Remove debugging information
-    echo "=== DEBUG SESSION INFO ===" . "<br>";
-    echo "User ID: " . $_SESSION["user_id"] . "<br>";
-    echo "Username: " . $_SESSION["username"] . "<br>";
 }
 
 ?>
