@@ -73,23 +73,31 @@ function createTaskForm() {
         <tr>
             <form id="task_entry" method="POST" action="/php/ajax/add_task.php"></form>
             <td>
-                <input form="task_entry" type="text" name="task_name">
+                <div class="form-group">
+                    <input class="form-control" form="task_entry" type="text" placeholder="Task Name" name="task_name">
+                </div>
             </td>
 
             <td>
-                TODO
+                <div class="form-group">
+                    <p>TODO</p>
+                </div>
             </td>
 
             <td>
-                <input form="task_entry" type="date" name="task_due_date">
+                <div class="form-group">
+                    <input form="task_entry" class="form-control" type="date" name="task_due_date">
+                </div>
             </td>
 
             <td>
-                <input form="task_entry" type="text" name="task_description">
+                <div class="form-group">
+                    <input form="task_entry" class="form-control" type="text" placeholder="Task Description" name="task_description">
+                </div>
             </td>
 
             <td>
-            <input form="task_entry" type="submit">
+                <button form="task_entry" type="submit" class="btn btn-primary">Create Task</button>
             </td>
         </tr>
     `
