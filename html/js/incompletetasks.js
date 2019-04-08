@@ -13,11 +13,12 @@ function getIncompleteTasks() {
         success: function(tasks) {
             $.each(tasks, function(i, task) {
                 var html = `
-                    <tr>
-                        <td>${task.name}</td>
-                        <td>${task.due_date.substring(0, 10)}</td>
-                        <td>${task.description}</td>
+                    <tr class="taskrow">
+                        <td class="name">${task.name}</td>
+                        <td class="date">${task.due_date.substring(0, 10)}</td>
+                        <td class="descrip">${task.description}</td>
                         <td>
+                            <button class="btn btn-primary" onclick="editTaskForm(this.parentNode.parentNode, ${task.id})">Edit</button>
                             <button class="btn btn-primary" onclick="completeTask(${task.id})">Complete</button>
                             <button class="btn btn-primary" onclick="deleteTask(${task.id})">Delete</button>
                         </td>
@@ -67,8 +68,6 @@ function createTaskForm() {
         return;
     }
 
-
-
     var $tasks = $('#tasks');
     var html = `
         <tr>
@@ -98,4 +97,45 @@ function createTaskForm() {
     `
 
     $tasks.append(html);
+}
+
+function editTaskForm(task, id) {
+  var $tasks = $('#tasks');
+
+  var taskName = task.querySelector(".name").innerHTML;
+  var taskDate = task.querySelector(".date").innerHTML;
+  var taskDescrip = task.querySelector(".descrip").innerHTML;
+
+  task.remove();
+
+  var html = `
+      <tr>
+          <form id="task_entry" method="POST" action="/php/ajax/edit_task.php">
+            <input form="task_entry" type="hidden" name="task_id" value=${id} />
+          </form>
+          <td>
+              <div class="form-group">
+                  <input class="form-control" form="task_entry" type="text" name="task_name" value="${taskName}" required>
+              </div>
+          </td>
+
+          <td>
+              <div class="form-group">
+                  <input form="task_entry" class="form-control" type="date" name="task_due_date" value="${taskDate}">
+              </div>
+          </td>
+
+          <td>
+              <div class="form-group">
+                  <input form="task_entry" class="form-control" type="text" name="task_description" value="${taskDescrip}">
+              </div>
+          </td>
+
+          <td>
+              <button form="task_entry" type="submit" class="btn btn-primary">Save</button>
+              <button form="task_entry" onclick="getIncompleteTasks()" class="btn btn-primary">Cancel</button>
+          </td>
+      </tr>
+  `
+  $tasks.prepend(html);
 }
