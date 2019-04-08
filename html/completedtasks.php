@@ -28,7 +28,7 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username'])) {
 		<h2 class="navbar-brand">TODO List</h2>
 		<ul class="navbar-nav mr-4">
 			<li class="nav-item"><a class="nav-link" href="main.php">In-Progress Tasks</a></li>
-			<li class="nav-item"><a class="nav-link" href="php/logout.php">Logout</a></li><!--change this to actually log out -->
+			<li class="nav-item"><a class="nav-link" href="php/logout.php">Logout</a></li>
 		</ul>
 	</nav>
 
@@ -39,7 +39,6 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username'])) {
 			<thead>
 				<tr>
 					<th scope="col">Task</th>
-					<th scope="col">Tags</th>
 					<th scope="col">Due</th>
 					<th scope="col">Description</th>
           <th scope="col">Completed</th>

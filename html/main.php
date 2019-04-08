@@ -20,7 +20,6 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username'])) {
 
 	<!-- bootstrap CDN import -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/jquery.datetimepicker.css">
 
 	<!-- our custom stylesheet -->
 	<link rel="stylesheet" href="css/main.css" type="text/css">
@@ -30,7 +29,7 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username'])) {
 		<h2 class="navbar-brand">TODO List</h2>
 		<ul class="navbar-nav mr-4">
 			<li class="nav-item"><a class="nav-link" href="completedtasks.php">Completed Tasks</a></li>
-			<li class="nav-item"><a class="nav-link" href="php/logout.php">Logout</a></li><!--change this to actually log out -->
+			<li class="nav-item"><a class="nav-link" href="php/logout.php">Logout</a></li>
 		</ul>
 	</nav>
 
@@ -41,7 +40,6 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username'])) {
 			<thead>
 				<tr>
 					<th scope="col">Task</th>
-					<th scope="col">Tags</th>
 					<th scope="col">Due</th>
 					<th scope="col">Description</th>
 					<th scope="col"><button class="btn btn-primary" onclick="createTaskForm()">+</th>
@@ -64,7 +62,6 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="js/incompletetasks.js"></script>
-    <script src="js/jquery.datetimepicker.full.js"></script>
 
 </body>
 </html>

@@ -15,7 +15,6 @@ function getIncompleteTasks() {
                 var html = `
                     <tr>
                         <td>${task.name}</td>
-                        <td>TODO</td>
                         <td>${task.due_date.substring(0, 10)}</td>
                         <td>${task.description}</td>
                         <td>
@@ -82,13 +81,7 @@ function createTaskForm() {
 
             <td>
                 <div class="form-group">
-                    <p>TODO</p>
-                </div>
-            </td>
-
-            <td>
-                <div class="form-group">
-                    <input form="task_entry" class="form-control" type="text" name="task_due_date" onmouseenter="datetime()" id="due_date">
+                    <input form="task_entry" class="form-control" type="date" name="task_due_date">
                 </div>
             </td>
 
@@ -106,8 +99,3 @@ function createTaskForm() {
 
     $tasks.append(html);
 }
-
-// Calender with time picker function
-function datetime(){
-    $("#due_date").datetimepicker();
-    }

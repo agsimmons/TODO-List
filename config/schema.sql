@@ -13,10 +13,3 @@ CREATE TABLE task (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
                    due_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
                    description VARCHAR(2048),
                    completed BOOLEAN NOT NULL DEFAULT 0);
-
--- Create 'tag' table
-DROP TABLE IF EXISTS tag;
-CREATE TABLE tag (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                  fk_task INT NOT NULL,
-                  FOREIGN KEY (fk_task) REFERENCES task(id) ON DELETE CASCADE,
-                  name VARCHAR(32) NOT NULL);

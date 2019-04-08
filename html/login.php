@@ -22,7 +22,6 @@ if (isset($_SESSION["user_id"]) && isset($_SESSION['username'])) {
 
 	<!-- our custom stylesheets -->
 	<link rel="stylesheet" href="css/main.css" type="text/css">
-	<link rel="stylesheet" href="css/login.css" type="text/css">
 </head>
 <body class="text-center">
 	<h1>// TODO:</h1>

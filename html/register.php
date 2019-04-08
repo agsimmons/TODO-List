@@ -22,11 +22,10 @@ if (isset($_SESSION["user_id"]) && isset($_SESSION['username'])) {
 
 	<!-- our custom stylesheet -->
 	<link rel="stylesheet" href="css/main.css" type="text/css">
-	<link rel="stylesheet" href="css/register.css" type="text/css">
 </head>
 <body class="text-center">
 	<h1>// TODO:</h1>
-	<form method="post" id="formRegister" action="php/register.php">
+	<form method="post" id="formRegister" action="php/register.php" oninput='confirmPassword.setCustomValidity(confirmPassword.value != password.value ? "Passwords do not match" : "")'>
 			<div class="form-group">
 				<label class="sr-only" for="usernameInput">Username</label>
 				<input type="text" class="form-control" placeholder="Username" id="usernameInput" name="username"/>
