@@ -68,6 +68,8 @@ function createTaskForm() {
         return;
     }
 
+
+
     var $tasks = $('#tasks');
     var html = `
         <tr>
@@ -86,7 +88,7 @@ function createTaskForm() {
 
             <td>
                 <div class="form-group">
-                    <input form="task_entry" class="form-control" type="date" name="task_due_date">
+                    <input form="task_entry" class="form-control" type="text" name="task_due_date" onmouseenter="datetime()" id="due_date">
                 </div>
             </td>
 
@@ -104,3 +106,8 @@ function createTaskForm() {
 
     $tasks.append(html);
 }
+
+// Calender with time picker function
+function datetime(){
+    $("#due_date").datetimepicker();
+    }

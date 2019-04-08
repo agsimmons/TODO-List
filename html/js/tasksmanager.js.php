@@ -4,7 +4,7 @@
 function addTask() {
   var taskTable = document.getElementById("task_table");
   // insert new row to bottom of the table
-  taskTable.insertRow(-1).innerHTML = '<tr id="next_row"><td id="name_td"><textarea name="name" placeholder="New task" id="name"></textarea></td>' + '<td id="tag_td"><p id="tag">New Tag</p></td>' + '<td id="date_td"><input name="date" id="datetime" type="text" value="" onmouseenter="datetime()"></input></td>' + '<td id="description_td"><textarea name="description" placeholder="Enter description here" id="description"></textarea></td>' + '<td id="buttons"><button class="btn btn-primary" id="create_btn" onclick="createTask()">Create</button></td></tr>';
+  taskTable.insertRow(-1).innerHTML = '<tr id="next_row"><td id="name_td"><textarea name="name" placeholder="New task" id="name"></textarea></td>' + '<td id="tag_td"><p id="tag">New Tag</p></td>' + '<td id="date_td"><input name="due_date" id="due_date" type="text" value="" onmouseenter="datetime()"></input></td>' + '<td id="description_td"><textarea name="description" placeholder="Enter description here" id="description"></textarea></td>' + '<td id="buttons"><button class="btn btn-primary" id="create_btn" onclick="createTask()">Create</button></td></tr>';
 
 }
       
@@ -59,7 +59,7 @@ function createTask() {
 }
 // Calender with time picker function
 function datetime(){
-    $("#datetime").datetimepicker();
+    $("#due_date").datetimepicker();
     }
 
 // editTask allows a user to edit a cell when clicked in task_table
