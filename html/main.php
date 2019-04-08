@@ -26,7 +26,7 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username'])) {
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg">
-		<h2 class="navbar-brand">TODO List</h2>
+		<h2 class="navbar-brand">// TODO:</h2>
 		<ul class="navbar-nav mr-4">
 			<li class="nav-item"><a class="nav-link" href="completedtasks.php">Completed Tasks</a></li>
 			<li class="nav-item"><a class="nav-link" href="php/logout.php">Logout</a></li>
