@@ -3,14 +3,8 @@
 session_start();
 
 // If user does not have an active session, redirect to the main page
-if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username']) || !isset($_SESSION['hashed_password'])) {
+if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username'])) {
     header('Location: /login.php');
-} else {
-    // TODO: Remove debugging information
-    echo "=== DEBUG SESSION INFO ===" . "<br>";
-    echo "User ID: " . $_SESSION["user_id"] . "<br>";
-    echo "Username: " . $_SESSION["username"] . "<br>";
-    echo "Hashed Password: " . $_SESSION["hashed_password"] . "<br>";
 }
 
 ?>
@@ -23,12 +17,11 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username']) || !isset($_SE
 
 	<title>TODO List - Completed Tasks</title>
 
-	<!-- bootstrap CDN import -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- bootstrap CDN import -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-	<!-- our custom stylesheet -->
-	<link rel="stylesheet" href="css/main.css" type="text/css">
+    <!-- our custom stylesheet -->
+    <link rel="stylesheet" href="css/main.css" type="text/css">
 </head>
 <body>
   <nav class="navbar navbar-expand-lg">
@@ -52,33 +45,7 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username']) || !isset($_SE
           <th scope="col">Completed</th>
 				</tr>
 			</thead>
-			<tbody>
-				<?php
-					$mysql_host = "localhost";
-					$mysql_user = "todouser";
-					$mysql_pass = "todouserpassword";
-					$mysql_db = "todo";
-
-					// Create connection to database
-					$conn = new mysqli($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
-
-					$query = "SELECT * FROM task WHERE fk_user='".$_SESSION['id']."' AND completed=1";
-					$result = $conn->query($query);
-
-					if ($result > 0) {
-						while ($row = $result->fetch_assoc()) {
-							echo '<tr>
-										<td>' . $row["name"]. '</td>
-										<td>Test Tag</td>
-										<td>' . $row["due_date"]. '</td>
-										<td>' . $row["description"]. '</td>
-										<td>2019-04-02 17:38:33</td>
-										</tr>';
-						}
-					}
-					mysqli_close($conn);
-				?>
-			</tbody>
+			<tbody id="tasks"></tbody>
 		</table>
 	</section>
 	<br>
@@ -89,5 +56,12 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username']) || !isset($_SE
 			Web Development Spring 2019
 		</small>
 	</footer>
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/completedtasks.js"></script>
+
 </body>
 </html>

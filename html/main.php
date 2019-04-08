@@ -3,14 +3,8 @@
 session_start();
 
 // If user does not have an active session, redirect to the login page
-if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username']) || !isset($_SESSION['hashed_password'])) {
+if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username'])) {
     header('Location: /login.php');
-} else {
-    // TODO: Remove debugging information
-    echo "=== DEBUG SESSION INFO ===" . "<br>";
-    echo "User ID: " . $_SESSION["user_id"] . "<br>";
-    echo "Username: " . $_SESSION["username"] . "<br>";
-    echo "Hashed Password: " . $_SESSION["hashed_password"] . "<br>";
 }
 
 ?>
@@ -27,12 +21,8 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username']) || !isset($_SE
 	<!-- bootstrap CDN import -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-	<link rel="stylesheet" href=css/jquery.datetimepicker.css>
-	
-
-	<!-- our custom stylesheet and script -->
+	<!-- our custom stylesheet -->
 	<link rel="stylesheet" href="css/main.css" type="text/css">
-	<script src="js/tasksmanager.js.php"></script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg">
@@ -53,38 +43,10 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username']) || !isset($_SE
 					<th scope="col">Tags</th>
 					<th scope="col">Due</th>
 					<th scope="col">Description</th>
-					<th scope="col"><button class="btn btn-primary" onclick="addTask()">+</th>
+					<th scope="col"><button class="btn btn-primary" onclick="createTaskForm()">+</th>
 				</tr>
 			</thead>
-			<tbody>
-				<?php
-					$mysql_host = "localhost";
-					$mysql_user = "todouser";
-					$mysql_pass = "todouserpassword";
-					$mysql_db = "todo";
-
-					// Create connection to database
-					$conn = new mysqli($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
-
-					// change fk_user to the user's id from the session
-					$query = "SELECT * FROM task WHERE fk_user=1 AND completed=0";
-					$result = $conn->query($query);
-
-					if ($result > 0) {
-						while ($row = $result->fetch_assoc()) {
-							echo '<tr>
-										<td>' . $row["name"]. '</td>
-										<td>Test Tag</td>
-										<td>' . $row["due_date"]. '</td>
-										<td>' . $row["description"]. '</td>
-										<td><button class="btn btn-primary" onclick="completeTask()">Complete</button>
-										<button class="btn btn-primary" onclick="deleteTask()">Delete</button></td>
-									  </tr>';
-						}
-					}
-					mysqli_close($conn);
-				?>
-			</tbody>
+			<tbody id="tasks"></tbody>
 		</table>
 	</div>
 	<br>
@@ -96,11 +58,11 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username']) || !isset($_SE
 		</small>
 	</footer>
 
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-	<script src="js/jquery.datetimepicker.full.js"></script>
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/incompletetasks.js"></script>
 
 </body>
 </html>

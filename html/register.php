@@ -3,14 +3,8 @@
 session_start();
 
 // If user has an active session, redirect to the main page
-if (isset($_SESSION["user_id"]) && isset($_SESSION['username']) && isset($_SESSION['hashed_password'])) {
+if (isset($_SESSION["user_id"]) && isset($_SESSION['username'])) {
     header('Location: /main.php');
-} else {
-    // TODO: Remove debugging information
-    echo "=== DEBUG SESSION INFO ===" . "<br>";
-    echo "User ID: " . $_SESSION["user_id"] . "<br>";
-    echo "Username: " . $_SESSION["username"] . "<br>";
-    echo "Hashed Password: " . $_SESSION["hashed_password"] . "<br>";
 }
 
 ?>
@@ -25,7 +19,6 @@ if (isset($_SESSION["user_id"]) && isset($_SESSION['username']) && isset($_SESSI
 
 	<!-- bootstrap CDN import -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 	<!-- our custom stylesheet -->
 	<link rel="stylesheet" href="css/main.css" type="text/css">
@@ -53,5 +46,11 @@ if (isset($_SESSION["user_id"]) && isset($_SESSION['username']) && isset($_SESSI
 			<br>
 			<p><small>Already have an account? <a href="login.php">Login</a></small></p>
 	</form>
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </body>
 </html>
