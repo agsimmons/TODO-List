@@ -10,11 +10,11 @@ $username = $_POST["username"];
 $password = $_POST["password"];
 
 # Get username and hashed password from database
-$response = $conn->query("SELECT id, password FROM user WHERE username = '" . $username . "';");
-$response_assoc = $response->fetch_assoc();
-
-$db_id = $response_assoc["id"];
-$db_password = $response_assoc["password"];
+$stmt = $conn->prepare("SELECT id, password FROM user WHERE username = ?;");
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$stmt->bind_result($db_id, $db_password);
+$stmt->fetch();
 
 if (password_verify($password, $db_password)) {
 

@@ -9,9 +9,11 @@ include "db_config.php";
 $username = $_POST["username"];
 $password = password_hash($_POST["password"], PASSWORD_BCRYPT);
 
-$sql_register = "INSERT INTO user(username, password) VALUES ('" . $username . "', '" . $password . "');";
+$stmt = $conn->prepare("INSERT INTO user (username, password) VALUES (?, ?);");
+$stmt->bind_param("ss", $username, $password);
+$stmt->execute();
 
-if ($conn->query("INSERT INTO user(username, password) VALUES ('" . $username . "', '" . $password . "');")) {
+if ($stmt->error) {
 
     // Set session variables
     $_SESSION["user_id"] = $conn->insert_id;
@@ -20,7 +22,7 @@ if ($conn->query("INSERT INTO user(username, password) VALUES ('" . $username . 
     header('Location: /main.php');
 } else {
     // TODO: Log error instead of showing it to user
-    echo "ERROR: " . $conn->connect_error;
+    echo "ERROR: " . $stmt->error;
 }
 
 $conn->close();
