@@ -5,15 +5,16 @@ session_start();
 // Initialize database connection variables
 include "../db_config.php";
 
-$stmt = $conn->prepare("SELECT id, name, due_date, description FROM task WHERE fk_user = ? AND completed = 1 ORDER BY due_date DESC;");
+$stmt = $conn->prepare("SELECT id, name, tag, due_date, description FROM task WHERE fk_user = ? AND completed = 1 ORDER BY due_date DESC;");
 $stmt->bind_param("i", $_SESSION["user_id"]);
 $stmt->execute();
-$stmt->bind_result($db_id, $db_name, $db_due_date, $db_description);
+$stmt->bind_result($db_id, $db_name, $db_tag, $db_due_date, $db_description);
 
 $result_array = array();
 while ($stmt->fetch()) {
     $result_array[] = array("id" => $db_id,
                             "name" => $db_name,
+                            "tag" => $db_tag,
                             "due_date" => $db_due_date,
                             "description" => $db_description);
 }
