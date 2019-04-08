@@ -88,7 +88,7 @@ function createTaskForm() {
 
             <td>
                 <div class="form-group">
-                    <input form="task_entry" class="form-control" type="date" name="task_due_date">
+                    <input form="task_entry" class="form-control" type="date" name="task_due_date" required>
                 </div>
             </td>
 
