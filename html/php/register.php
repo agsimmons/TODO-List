@@ -13,7 +13,7 @@ $stmt = $conn->prepare("INSERT INTO user (username, password) VALUES (?, ?);");
 $stmt->bind_param("ss", $username, $password);
 $stmt->execute();
 
-if ($stmt->error) {
+if (!$stmt->error) {
 
     // Set session variables
     $_SESSION["user_id"] = $conn->insert_id;
