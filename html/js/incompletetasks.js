@@ -67,6 +67,8 @@ function createTaskForm() {
         return;
     }
 
+
+
     var $tasks = $('#tasks');
     var html = `
         <tr>
