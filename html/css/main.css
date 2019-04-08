@@ -45,3 +45,10 @@ table {
   background-color: #E82C96;
   border-color: #E82C96;
 }
+
+#formRegister, #formLogin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
