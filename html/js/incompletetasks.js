@@ -15,6 +15,7 @@ function getIncompleteTasks() {
                 var html = `
                     <tr class="taskrow">
                         <td class="name">${task.name}</td>
+                        <td class="tag">${task.tag}</td>
                         <td class="date">${task.due_date.substring(0, 10)}</td>
                         <td class="descrip">${task.description}</td>
                         <td>
@@ -80,7 +81,13 @@ function createTaskForm() {
 
             <td>
                 <div class="form-group">
-                    <input form="task_entry" class="form-control" type="date" name="task_due_date">
+                    <input class="form-control" form="task_entry" type="text" placeholder="Tag" name="task_tag">
+                </div>
+            </td>
+
+            <td>
+                <div class="form-group">
+                    <input form="task_entry" class="form-control" type="date" name="task_due_date" required>
                 </div>
             </td>
 
@@ -103,6 +110,7 @@ function editTaskForm(task, id) {
   var $tasks = $('#tasks');
 
   var taskName = task.querySelector(".name").innerHTML;
+  var taskTag = task.querySelector(".tag").innerHTML;
   var taskDate = task.querySelector(".date").innerHTML;
   var taskDescrip = task.querySelector(".descrip").innerHTML;
 
@@ -116,6 +124,12 @@ function editTaskForm(task, id) {
           <td>
               <div class="form-group">
                   <input class="form-control" form="task_entry" type="text" name="task_name" value="${taskName}" required>
+              </div>
+          </td>
+
+          <td>
+              <div class="form-group">
+                  <input class="form-control" form="task_entry" type="text" name="task_tag" value="${taskTag}" required>
               </div>
           </td>
 

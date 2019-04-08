@@ -5,9 +5,10 @@ session_start();
 // Initialize database connection variables
 include "../db_config.php";
 
-$stmt = $conn->prepare("UPDATE task SET name = ?, due_date = ?, description = ? WHERE fk_user = ? AND id = ?;");
-$stmt->bind_param("sssii",
+$stmt = $conn->prepare("UPDATE task SET name = ?, tag = ?, due_date = ?, description = ? WHERE fk_user = ? AND id = ?;");
+$stmt->bind_param("ssssii",
                   $_POST["task_name"],
+                  $_POST["task_tag"],
                   $_POST["task_due_date"],
                   $_POST["task_description"],
                   $_SESSION["user_id"],
