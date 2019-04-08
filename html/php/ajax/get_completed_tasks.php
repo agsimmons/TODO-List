@@ -5,8 +5,6 @@ session_start();
 // Initialize database connection variables
 include "../db_config.php";
 
-//$result = $conn->query("SELECT * FROM task WHERE fk_user = " . $_SESSION["user_id"] . " AND completed = 1");
-
 $stmt = $conn->prepare("SELECT id, name, due_date, description FROM task WHERE fk_user = ? AND completed = 1");
 $stmt->bind_param("i", $_SESSION["user_id"]);
 $stmt->execute();
