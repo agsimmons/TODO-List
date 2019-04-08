@@ -15,7 +15,6 @@ function getCompletedTasks() {
                 var html = `
                     <tr>
                         <td>${task.name}</td>
-                        <td>TODO</td>
                         <td>${task.due_date.substring(0, 10)}</td>
                         <td>${task.description}</td>
                         <td>

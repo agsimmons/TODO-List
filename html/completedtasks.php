@@ -39,7 +39,6 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username'])) {
 			<thead>
 				<tr>
 					<th scope="col">Task</th>
-					<th scope="col">Tags</th>
 					<th scope="col">Due</th>
 					<th scope="col">Description</th>
           <th scope="col">Completed</th>

@@ -15,7 +15,6 @@ function getIncompleteTasks() {
                 var html = `
                     <tr>
                         <td>${task.name}</td>
-                        <td>TODO</td>
                         <td>${task.due_date.substring(0, 10)}</td>
                         <td>${task.description}</td>
                         <td>
@@ -75,12 +74,6 @@ function createTaskForm() {
             <td>
                 <div class="form-group">
                     <input class="form-control" form="task_entry" type="text" placeholder="Task Name" name="task_name" required>
-                </div>
-            </td>
-
-            <td>
-                <div class="form-group">
-                    <p>TODO</p>
                 </div>
             </td>
 
