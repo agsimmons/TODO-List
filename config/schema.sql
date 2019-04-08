@@ -12,4 +12,5 @@ CREATE TABLE task (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
                    name VARCHAR(255) NOT NULL,
                    due_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
                    description VARCHAR(2048),
-                   completed BOOLEAN NOT NULL DEFAULT 0);
+                   completed BOOLEAN NOT NULL DEFAULT 0,
+                   completed_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
