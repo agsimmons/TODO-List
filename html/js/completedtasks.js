@@ -18,9 +18,7 @@ function getCompletedTasks() {
                         <td>${task.tag}</td>
                         <td>${task.due_date.substring(0, 10)}</td>
                         <td>${task.description}</td>
-                        <td>
-                            TODO
-                        </td>
+                        <td>${task.completed_date.substring(0, 10)}</td>
                     </tr>
                 `;
 
