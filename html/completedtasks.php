@@ -15,7 +15,7 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username'])) {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>TODO List - Completed Tasks</title>
+	<title>// TODO: - Completed Tasks</title>
 
     <!-- bootstrap CDN import -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -25,7 +25,7 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username'])) {
 </head>
 <body>
   <nav class="navbar navbar-expand-lg">
-		<h2 class="navbar-brand">TODO List</h2>
+		<h2 class="navbar-brand">// TODO:</h2>
 		<ul class="navbar-nav mr-4">
 			<li class="nav-item"><a class="nav-link" href="main.php">In-Progress Tasks</a></li>
 			<li class="nav-item"><a class="nav-link" href="php/logout.php">Logout</a></li>
@@ -39,6 +39,7 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION['username'])) {
 			<thead>
 				<tr>
 					<th scope="col">Task</th>
+                    			<th scope="col">Tag</th>
 					<th scope="col">Due</th>
 					<th scope="col">Description</th>
           <th scope="col">Completed</th>

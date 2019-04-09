@@ -14,6 +14,7 @@ $result_array = array();
 while ($stmt->fetch()) {
     $result_array[] = array("id" => $db_id,
                             "name" => $db_name,
+                            "tag" => $db_tag,
                             "due_date" => $db_due_date,
                             "description" => $db_description,
                             "completed_date" => $db_completed_date);
